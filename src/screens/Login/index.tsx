@@ -9,6 +9,7 @@ import {getInputProps} from '@helpers/formik';
 import {loginAction} from './redux/actionCreators';
 import {useDispatch} from 'react-redux';
 import {regexEmail, regexSpace} from '@helpers/regex';
+import {navigateTo} from '@helpers/rootNavigation';
 
 const pleaseSign = 'Please Sign In to proceed';
 const initialValues = {email: '', password: ''};
@@ -24,6 +25,8 @@ const Login = () => {
    */
   const onSubmit = useCallback(
     ({email, password}) => {
+      navigateTo('ListOfSitesScreen', {email});
+
       dispatch(
         loginAction({
           email,
@@ -61,7 +64,7 @@ const Login = () => {
             secureTextEntry={true}
             isPassword
             maxLength={50}
-            forbiddenСharacters={regexSpace}
+            forbiddenСharacters={regexSpace} 
             trimEnd={true}
             trimStart={true}
           />

@@ -1,11 +1,11 @@
 import * as Yup from 'yup';
-import {EMAIL} from '@helpers/validators';
+
+const EMAIL = Yup.string().email().required();
+const PASSWORD = Yup.string().min(8).required();
 
 const validationSchema = Yup.object().shape({
   email: EMAIL,
-  password: Yup.string()
-    .min(8, 'Password must contain at least 8 character')
-    .required("This field can't be empty"),
+  password: PASSWORD,
 });
 
 export {validationSchema};

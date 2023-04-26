@@ -1,14 +1,14 @@
-import {createContext, useContext, createRef} from 'react';
-
+import React, {createContext, useContext, createRef} from 'react';
 import type {
   NavigationContainerRef,
   ParamListBase,
-} from '@react-navigation/core';
+} from '@react-navigation/native';
 
-const navigationRef =
-  createRef<NavigationContainerRef<ReactNavigation.RootParamList>>();
+// Specify explicit types for navigationRef.
+const navigationRef = createRef<NavigationContainerRef<ParamListBase>>();
 
-const resetNavigation = (index: number, name: string) => {
+// Add explicit types to function arguments and return types.
+const resetNavigation = (index: number, name: string): void => {
   navigationRef.current?.reset({
     index,
     routes: [
@@ -19,16 +19,22 @@ const resetNavigation = (index: number, name: string) => {
   });
 };
 
-const navigateTo = (name: string, params: ParamListBase) => {
+// Make params optional.
+const navigateTo = (name: string, params?: ParamListBase): void => {
   navigationRef.current?.navigate(name, params);
 };
 
-const RootNavigationContext = createContext();
+// Add type to the root navigation context.
+type RootNavigationContextType = ReturnType<typeof useRootNavigation>;
+
+const RootNavigationContext = createContext<RootNavigationContextType>({});
 
 const RootNavigationProvider = RootNavigationContext.Provider;
 
-const useRootNavigation = () => useContext(RootNavigationContext);
+const useRootNavigation = (): NavigationContainerRef<ParamListBase> =>
+  useContext(RootNavigationContext) as NavigationContainerRef<ParamListBase>;
 
+// Export all the necessary components.
 export {
   resetNavigation,
   navigateTo,
