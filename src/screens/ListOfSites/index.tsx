@@ -42,12 +42,11 @@ const ListOfSitesScreen: FC<ListOfSitesScreenProps> = ({
       </View>
       <View style={siteWrapper}>
         {urls.map(item => (
-          <Text
-            onPress = {() => {
+          <View style={textWrapper}>
+            <Text onPress = {() => {
               setUrlWebView(item);
-            }}>
-            {item}
-          </Text>
+            }}> {item}</Text>
+          </View>
         ))}
       </View>
       <View style={webViewWrapper}>
