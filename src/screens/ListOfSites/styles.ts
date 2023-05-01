@@ -3,7 +3,7 @@ import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
   wrapper: {
-    margin: wp(4), // 15
+    margin: wp(4),
     flex: 1,
   },
   textWrapper: {
@@ -15,10 +15,9 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'yellow',
   },
   webViewWrapper: {
-    flex: 1,
+    flex: 5,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -26,7 +25,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'black',
   },
 });
 

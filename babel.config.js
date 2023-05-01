@@ -16,30 +16,15 @@ module.exports = {
         root: ['./src'],
         alias: {
           '@assets': './src/assets',
-          '@bridges': './src/bridges',
           '@components': './src/components',
           '@constants': './src/constants',
           '@helpers': './src/helpers',
-          '@interfaces': './src/interfaces',
           '@navigation': './src/navigation',
           '@screens': './src/screens',
-          '@redux': './src/redux',
-          '@test-mocks': './__mocks__',
-          '@test-helpers': './__helpers__',
+          '@wrappers': './src/wrappers',
+
         },
       },
     ],
   ],
-  env: {
-    production: {
-      plugins: [
-        [
-          'react-remove-properties',
-          {
-            properties: ['testID'],
-          },
-        ],
-      ],
-    },
-  },
 };

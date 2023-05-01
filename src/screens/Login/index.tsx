@@ -6,8 +6,6 @@ import Input from '@components/Input';
 import {validationSchema} from './validationSchema';
 import {styles} from './styles';
 import {getInputProps} from '@helpers/formik';
-import {loginAction} from './redux/actionCreators';
-import {useDispatch} from 'react-redux';
 import {regexEmail, regexSpace} from '@helpers/regex';
 import {navigateTo} from '@helpers/rootNavigation';
 
@@ -18,24 +16,12 @@ const initialValues = {email: '', password: ''};
  * @constructor
  */
 const Login = () => {
-  const dispatch = useDispatch();
-
   /**
    * Submit login
    */
-  const onSubmit = useCallback(
-    ({email, password}) => {
-      navigateTo('ListOfSitesScreen', {email});
-
-      dispatch(
-        loginAction({
-          email,
-          password,
-        }),
-      );
-    },
-    [dispatch],
-  );
+  const onSubmit = useCallback(({email}) => {
+    navigateTo('ListOfSitesScreen', {email});
+  }, []);
 
   const formik = useFormik({
     initialValues,
@@ -64,7 +50,7 @@ const Login = () => {
             secureTextEntry={true}
             isPassword
             maxLength={50}
-            forbiddenСharacters={regexSpace} 
+            forbiddenСharacters={regexSpace}
             trimEnd={true}
             trimStart={true}
           />
