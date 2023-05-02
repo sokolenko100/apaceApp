@@ -13,6 +13,7 @@ import {colors} from '@assets/colors';
 interface IInput {
   label?: string;
   status?: string;
+  caption?: JSX.Element;
   disabled?: boolean;
   isPassword?: boolean;
   showError?: boolean;
@@ -30,6 +31,7 @@ const Input: FC<Props> = ({
   label,
   status,
   onBlur,
+  caption,
   disabled,
   secureTextEntry = false,
   isPassword,
@@ -55,7 +57,7 @@ const Input: FC<Props> = ({
    * Handle on blur input event
    */
   const handleOnBlur = useCallback(
-    e => {
+    (e) => {
       setIsFocused(false);
       if (onBlur) {
         onBlur(e);
@@ -68,14 +70,14 @@ const Input: FC<Props> = ({
    * Toggle secure text input
    */
   const toggleSecureEntry = useCallback(() => {
-    setIsSecureTextEntry(prevSecureTextEntry => !prevSecureTextEntry);
+    setIsSecureTextEntry((prevSecureTextEntry) => !prevSecureTextEntry);
   }, []);
 
   /**
    * Trim text input
    */
   const onChangeTextInput = useCallback(
-    text => {
+    (text) => {
       let value = forbiddenСharacters
         ? text.replace(forbiddenСharacters, '')
         : text;
@@ -128,6 +130,7 @@ const Input: FC<Props> = ({
             onPress={toggleSecureEntry}
           />
         )}
+        {statusDanger && <View>{caption}</View>}
       </View>
     </>
   );

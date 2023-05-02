@@ -22,7 +22,6 @@ module.exports = {
           '@navigation': './src/navigation',
           '@screens': './src/screens',
           '@wrappers': './src/wrappers',
-
         },
       },
     ],
