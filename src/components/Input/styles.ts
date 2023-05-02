@@ -10,6 +10,7 @@ const styles = StyleSheet.create({
     borderRadius: 4,
     alignItems: 'center',
     width: '100%',
+    maxWidth: '100%',
     justifyContent: 'space-between',
   },
   passwordView: {
