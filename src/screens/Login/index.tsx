@@ -1,5 +1,5 @@
 import React, {useCallback} from 'react';
-import {View, Text, SafeAreaView} from 'react-native';
+import {View, Text, SafeAreaView, KeyboardAvoidingView} from 'react-native';
 import {useFormik} from 'formik';
 import Button from '@components/Button';
 import Input from '@components/Input';
@@ -11,9 +11,9 @@ import {navigateTo} from '@helpers/rootNavigation';
 
 const pleaseSign = 'Please Sign In to proceed';
 const initialValues = {email: '', password: ''};
+
 /**
  * Login screen
- * @constructor
  */
 const Login = () => {
   /**
@@ -22,19 +22,20 @@ const Login = () => {
   const onSubmit = useCallback(({email}) => {
     navigateTo('ListOfSitesScreen', {email});
   }, []);
+  const {wrapper, loginDescription, container, inputSpace, submitButton} =
+    styles;
 
   const formik = useFormik({
     initialValues,
     onSubmit,
     validationSchema,
-    validateOnMount: true,
   });
 
   return (
-    <SafeAreaView style={styles.wrapper}>
-      <Text style={styles.loginDescription}>{pleaseSign}</Text>
-      <View style={styles.container}>
-        <View style={styles.inputSpace}>
+    <SafeAreaView style={wrapper}>
+      <Text style={loginDescription}>{pleaseSign}</Text>
+      <KeyboardAvoidingView behavior="padding" style={container}>
+        <View style={inputSpace}>
           <Input
             {...getInputProps(formik, 'Email')}
             autoCapitalize="none"
@@ -44,7 +45,7 @@ const Login = () => {
             forbiddenСharacters={regexEmail}
           />
         </View>
-        <View style={styles.inputSpace}>
+        <View style={inputSpace}>
           <Input
             {...getInputProps(formik, 'Password')}
             secureTextEntry={true}
@@ -55,12 +56,12 @@ const Login = () => {
             trimStart={true}
           />
         </View>
-      </View>
+      </KeyboardAvoidingView>
       <Button
         onPress={formik.handleSubmit}
         disabled={!formik.isValid}
         label={'Login'}
-        style={styles.submitButton}
+        style={submitButton}
         isShowNoInternetModal={true}
       />
     </SafeAreaView>

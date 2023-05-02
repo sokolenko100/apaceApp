@@ -7,6 +7,7 @@ type MainWebViewProps = {
   uri: string;
   setInformationGrab: (data: string) => void;
 };
+
 export const MainWebView = ({uri, setInformationGrab}: MainWebViewProps) => {
   const webViewRef = useRef<WebView>(null);
 
