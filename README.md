@@ -1,5 +1,5 @@
 
-**Project name: VisibleMagic**
+**Project name: Apace**
 
 ## Setup
 
@@ -157,7 +157,3 @@ You can configure some of Create React Native App's behavior using environment v
 1. `Podfile` is a specification that describes the dependencies of the targets of one or more Xcode projects
 2. `xcodeproj` a library written in Swift for parsing and working with Xcode projects
 3. `xcworkspace` your app's ios folder
-
-
-
-
